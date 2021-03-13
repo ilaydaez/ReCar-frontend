@@ -1,8 +1,13 @@
-<ul class="list-group">
-    <li class="list-group-item">An item</li>
-    <li class="list-group-item">A second item</li>
-    <li class="list-group-item">A third item</li>
-    <li class="list-group-item">A fourth item</li>
-    <li class="list-group-item">And a fifth one</li>
-  </ul>
+<div class="rounded-0 mt-4">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Renkler</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let color of colors">
+      <td>{{ color.colorName }}</td>
+    </tr>
+  </table>
+</div>
 

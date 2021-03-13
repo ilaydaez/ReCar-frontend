@@ -1,1 +1,25 @@
-<p>customer works!</p>
+
+<br>
+<header>
+  <em>
+    <mark>
+      <strong>MÜSTERİ LİSTESİ</strong>
+    </mark>
+  </em>
+</header>
+<br>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th>Ad</th>
+        <th>Soyad</th>
+        <th>Sehir</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let customer of customers">
+      <td>{{ customer.userFirstName }}</td>
+      <td>{{ customer.userLastName }}</td>
+      <td>{{ customer.companyName }}</td>
+    </tr>
+  </table>

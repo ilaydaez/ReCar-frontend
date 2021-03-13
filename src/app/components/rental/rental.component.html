@@ -1,1 +1,29 @@
-<p>rental works!</p>
+
+<br>
+<header>
+  <em>
+    <mark>
+      <strong>KİRALANAN ARAÇ LİSTESİ</strong>
+    </mark>
+  </em>
+</header>
+<br>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th>Araba</th>
+        <th>Musteri Adı</th>
+        <th>Musteri Soyadı</th>
+        <th>Kiralanma Tarihi</th>
+        <th>Geri Donus Tarihi</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let rental of rentals">
+      <td>{{ rental.carName }}</td>
+      <td>{{ rental.userFirstName }}</td>
+      <td>{{ rental.userLastName }}</td>
+      <td>{{ rental.rentDate }}</td>
+      <td>{{ rental.returnDate }}</td>
+    </tr>
+  </table>
