@@ -1,1 +1,20 @@
-<p>car works!</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Araba</th>
+      <th>Marka</th>
+      <th>Renk</th>
+      <th>Model Yılı</th>
+      <th>Fiyatı</th>
+      <th>Açıklama</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let car of cars">
+    <td>{{ car.carName }}</td>
+    <td>{{ car.brandName }}</td>
+    <td>{{ car.colorName }}</td>
+    <td>{{ car.modelYear }}</td>
+    <td>{{ car.dailyPrice }}</td>
+    <td>{{ car.description }}</td>
+  </tr>
+</table>
