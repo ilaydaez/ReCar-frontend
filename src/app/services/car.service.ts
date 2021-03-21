@@ -15,21 +15,21 @@ export class CarService {
 
   getCars() : Observable<ListResponseModel<Car>>{
 
-    let newApiUrl = this.apiUrl + "getcardetails";
+    let newApiUrl = this.apiUrl + "getbydetails";
 
     return this.httpClient
     .get<ListResponseModel<Car>>(newApiUrl);
   }
 
   getCarsByBrand(brandID: number) : Observable<ListResponseModel<Car>>{
-    let newApiUrl = this.apiUrl + "getbybrandid?brandId=" + brandID;
+    let newApiUrl = this.apiUrl + "getbybrand?brandId=" + brandID;
 
     return this.httpClient
       .get<ListResponseModel<Car>>(newApiUrl);
   }
 
   getCarsByColor(colorID: number): Observable<ListResponseModel<Car>>{
-    let newApiUrl = this.apiUrl + "getbycolorid?colorId=" + colorID;
+    let newApiUrl = this.apiUrl + "getbycolor?colorId=" + colorID;
 
     return this.httpClient
       .get<ListResponseModel<Car>>(newApiUrl);

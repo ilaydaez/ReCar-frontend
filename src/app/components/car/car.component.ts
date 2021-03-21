@@ -14,7 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 export class CarComponent implements OnInit {
 
   cars : Car[] = [];
-  carImageBasePath = "https://localhost:44350/api/images";
+  carImageBasePath = "https://localhost:44350/images";
   carNameFilter = "";
 
   constructor(private carService: CarService,
@@ -24,11 +24,11 @@ export class CarComponent implements OnInit {
 
       this.activatedRoute.params
         .subscribe((params) => {
-          if(params["brandId"]){
-            this.getCarsByBrand(params["brandId"]);
+          if(params["brandID"]){
+            this.getCarsByBrand(params["brandID"]);
           }
-          else if(params["colorId"]){
-            this.getCarsByColor(params["colorId"]);
+          else if(params["colorID"]){
+            this.getCarsByColor(params["colorID"]);
           }
           else{
             this.getCars();
@@ -57,10 +57,10 @@ export class CarComponent implements OnInit {
       });
   }
 
-  getCarImage(car:Car){
+  getCarImage(carID:Car){
 
-    if(car.imagePath){
-      return car.imagePath
+    if(carID.imagePath){
+      return carID.imagePath
     }
     else{
       return 'default.jpg'
