@@ -1,13 +1,16 @@
-<div class="rounded-0 mt-4">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Renkler</th>
-      </tr>
-    </thead>
-    <tr *ngFor="let color of colors">
-      <td>{{ color.colorName }}</td>
-    </tr>
-  </table>
+
+<div class="my-4">
+  <input placeholder="Renk Ara" type="text" class="form-control" [(ngModel)]="colorFilter">
 </div>
 
+<ul class="list-group">
+  <li
+  [class]="getAllColorClass()"
+  routerLink="/cars"
+  >Tüm Renkler</li>
+  <li  
+  [class]="getCurrentClass(color)"
+  (click)="setCurrentColor(color)"
+  routerLink="/cars/color/{{color.colorID}}"
+  *ngFor="let color of colors">{{color.colorName}}</li>
+</ul>

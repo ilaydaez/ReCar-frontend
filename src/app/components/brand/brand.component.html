@@ -1,12 +1,15 @@
-<div class="rounded-0 mt-4">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Markalar</th>
-      </tr>
-    </thead>
-    <tr *ngFor="let brand of brands">
-      <td>{{ brand.brandName }}</td>
-    </tr>
-  </table>
+<div class="my-4">
+  <input type="text" [(ngModel)]="filterBrand" class="form-control" placeholder="Marka Ara" >
 </div>
+
+<ul class="list-group">
+  <li
+      [class]="getAllBrandsClass()"
+      routerLink="/cars"
+  >Tüm Markalar</li>
+  <li 
+  (click)="setCurrentBrand(brand)"
+  [class]="getCurrentBrand(brand)" 
+  routerLink="/cars/brand/{{brand.brandID}}"
+  *ngFor="let brand of brands">{{brand.brandName}}</li>
+</ul>
