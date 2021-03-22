@@ -5,6 +5,8 @@ import { from } from 'rxjs';
 import { ThisReceiver } from '@angular/compiler';
 import { CarService } from 'src/app/services/car.service';
 import { ActivatedRoute } from '@angular/router';
+import { CarDetail } from 'src/app/models/carDetail';
+import { CarImage } from 'src/app/models/carImage';
 
 @Component({
   selector: 'app-car',
@@ -14,7 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 export class CarComponent implements OnInit {
 
   cars : Car[] = [];
-  carImageBasePath = "https://localhost:44350/images";
+  carImageBasePath = "https://localhost:44350/images/";
   carNameFilter = "";
 
   constructor(private carService: CarService,
@@ -57,10 +59,10 @@ export class CarComponent implements OnInit {
       });
   }
 
-  getCarImage(carID:Car){
+  getCarImage(cars:Car){
 
-    if(carID.imagePath){
-      return carID.imagePath
+    if(cars.imagePath){
+      return cars.imagePath
     }
     else{
       return 'default.jpg'
