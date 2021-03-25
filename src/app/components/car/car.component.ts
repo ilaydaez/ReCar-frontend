@@ -17,7 +17,7 @@ export class CarComponent implements OnInit {
 
   cars : Car[] = [];
   carImageBasePath = "https://localhost:44350/images/";
-  carNameFilter = "";
+  carFilter:" ";
 
   constructor(private carService: CarService,
     private activatedRoute: ActivatedRoute) { }

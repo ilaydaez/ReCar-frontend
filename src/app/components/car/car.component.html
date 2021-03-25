@@ -1,27 +1,47 @@
-<div class="row ml-0 mr-0">
-  <div class="col-md-6"></div>
-  <div class="col-md-6">
-      <input type="text" [(ngModel)]="carNameFilter" placeholder="Araba Adı Ara" class="form-control mt-4">
-  </div>
+<div class="mb-3">
+  <label for="filterText" class="form-label">Araba Ara</label>
+  <input
+    type="text"
+    [(ngModel)]="carFilter"
+    class="form-control"
+    id="filterText"
+    placeholder="Arama İfadesi Giriniz"
+  />
+</div>
+
+<div *ngIf="carFilter" class="alert alert-success">
+  {{ carFilter }} aradınız
 </div>
 
 <div class="row ml-0 mr-0">
-  <div *ngFor="let car of cars" class="col-md-4 my-4">
-      <div  class="card" style="width: 100%;">
-          <img src="{{carImageBasePath}}{{getCarImage(car)}}" class="card-img-top" alt="Araba Resmi">
-          <div class="card-body">
-            <h5 class="card-title text-center">{{car.carName}}</h5>
-            <hr>
-            <p> <b>Marka :</b> {{car.brandName}} </p>
-            <hr>
-            <p> <b>Model Yılı :</b> {{car.modelYear}} </p>
-            <hr>
-            <p> <b>Günlük Fiyatı :</b> {{car.dailyPrice}} </p>
-            <hr>
-            <p> <b>Renk :</b> {{car.colorName}} </p>
-            <hr>
-            <a routerLink="/cars/detail/{{car.carID}}" class="btn btn-outline-dark mt-2">Detay</a>
-          </div>
-        </div>
+  <div *ngFor="let car of cars | carFilterPipe:carFilter" class="col-md-4 my-4">
+    <div class="card" style="width: 100%">
+      <img
+        src="{{ carImageBasePath }}{{ getCarImage(car) }}"
+        class="card-img-top"
+        alt="Araba Resmi"
+      />
+      <div class="card-body">
+        <h5 class="card-title text-center">{{ car.carName | uppercase }}</h5>
+        <hr />
+        <p><b>Marka :</b> {{ car.brandName }}</p>
+        <hr />
+        <p><b>Model Yılı :</b> {{ car.modelYear }}</p>
+        <hr />
+        <p><b>Günlük Fiyatı :</b> {{ car.dailyPrice | currency }}</p>
+        <hr />
+        <p>
+          <b>KDV Fiyatı :</b> {{ car.dailyPrice | vatAdded: 10 | currency }}
+        </p>
+        <hr />
+        <p><b>Renk :</b> {{ car.colorName }}</p>
+        <hr />
+        <a
+          routerLink="/cars/detail/{{ car.carID }}"
+          class="btn btn-outline-dark mt-2"
+          >Detay</a
+        >
+      </div>
+    </div>
   </div>
 </div>
