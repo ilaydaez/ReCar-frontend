@@ -1,9 +1,19 @@
+<div class="my-4">
+  <input
+    type="text"
+    [(ngModel)]="filterBrand"
+    class="form-control"
+    id="filterText"
+    placeholder="Marka Ara"
+  />
+<!-- <input type="text" [(ngModel)]="filterBrand" class="form-control" placeholder="Marka Ara" > -->
+</div>
+<div *ngIf="filterBrand" class="alert alert-success">
+{{ filterBrand }} aradınız
+</div>
+
 <form>
-  
-  <div class="my-4">
-    <input type="text" [(ngModel)]="filterBrand" class="form-control" placeholder="Marka Ara" >
-  </div>
-  
+
   <!-- <ul class="list-group">
     <li
         [class]="getAllBrandsClass()"

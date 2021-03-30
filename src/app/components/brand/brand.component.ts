@@ -60,4 +60,6 @@ export class BrandComponent implements OnInit {
   allBrandSelected(){
     return this.currentBrand == undefined ? true : false;
   }
+
+  
 }

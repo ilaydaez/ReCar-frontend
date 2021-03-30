@@ -38,16 +38,15 @@
         <hr />
         <p><b>Renk :</b> {{ car.colorName }}</p>
         <hr />
-        <a
+        <!-- <a
           routerLink="/cars/detail/{{ car.carID }}"
-          class="btn btn-outline-dark mt-2"
+          class="btn btn-outline-dark mt-10"
           >Detay</a
-        >
+        > -->
 
-        <a
-         (click)="rentCar(car)" class="btn btn-outline-success mt-2">Kirala
-          </a
-        >
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <button routerLink="/cars/detail/{{ car.carID }}" class="btn btn-outline-dark" type="button">Detay</button>
+        </div>
       </div>
     </div>
   </div>

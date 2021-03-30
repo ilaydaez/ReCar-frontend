@@ -1,7 +1,19 @@
-
 <div class="my-4">
-  <input  type="text" [(ngModel)]="colorFilter" class="form-control" placeholder="Renk Ara" >
+  <input
+    type="text"
+    [(ngModel)]="colorFilter"
+    class="form-control"
+    id="filterText"
+    placeholder="Renk Ara"
+  />
 </div>
+<div *ngIf="colorFilter" class="alert alert-success">
+{{ colorFilter }} aradınız
+</div>
+
+<!-- <div class="my-4">
+  <input  type="text" [(ngModel)]="colorFilter" class="form-control" placeholder="Renk Ara" >
+</div> -->
 
 <select (change)="setCurrentColor()" [(ngModel)]="currentColor" name="colorSelect" class="form-select" aria-label="Renkler" >
   <option [ngValue]="allColor" [selected]="allColorSelected()">Tüm Renkler</option>
