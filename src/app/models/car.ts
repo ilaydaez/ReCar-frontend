@@ -1,5 +1,6 @@
 export interface Car{
     carID:number;
+    customerID:number;
     carName:string;
     brandID:number;
     brandName:string;

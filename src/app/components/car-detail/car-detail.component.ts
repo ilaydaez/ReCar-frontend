@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
+import { CarDetail } from 'src/app/models/carDetail';
 import { CarImage } from 'src/app/models/carImage';
 import { Customer } from 'src/app/models/customer';
 import { Rental } from 'src/app/models/rental';
@@ -20,12 +21,12 @@ import { RentalService } from 'src/app/services/rental.service';
   styleUrls: ['./car-detail.component.css'],
 })
 export class CarDetailComponent implements OnInit {
-  carDetail: Car;
+  carDetail: CarDetail;
   carImages: CarImage[] = [];
   carImageBasePath = 'https://localhost:44350/images/';
 
   customers: Customer[] = [];
-  customerID: Number;
+  customerID: number;
   customerName: string;
   companyName: string;
   customerEmail: string;
@@ -54,9 +55,10 @@ export class CarDetailComponent implements OnInit {
     this.activatedRoute.params.subscribe((param) => {
       if (param['carID']) {
         this.getCarDetailByCarId(param['carID']);
+        this.getCustomersDetails();
+        this.getCarImagesByCarId(param['carID']);
       }
 
-      this.getCarImageByCarId();
     });
   }
 
@@ -69,23 +71,23 @@ export class CarDetailComponent implements OnInit {
     });
   }
 
-  getCarImage(carDetail:Car){
+  // getCarImage(carDetail:Car){
 
-    if(carDetail.imagePath){
-      return carDetail.imagePath
-    }
-    else{
-      return 'default.jpg'
-    }
-  }
+  //   if(carDetail.imagePath){
+  //     return carDetail.imagePath
+  //   }
+  //   else{
+  //     return 'default.jpg'
+  //   }
+  // }
 
-  getCarImageByCarId() {
-    this.carImageService
-      .getCarImageByCarId(this.activatedRoute.snapshot.params['carID'])
-      .subscribe((response) => {
-        this.carImages = response.data;
-        console.log(this.carImages);
-      });
+  getCarImagesByCarId(carID: number) {
+    this.carImageService.getCarImageByCarId(carID).subscribe((response) => {
+      this.carImages = response.data;
+
+      this.carImageBasePath =
+        this.carImageBasePath + '' + this.carImages[0].imagePath;
+    });
   }
 
   sliderItemActive(index: number) {
@@ -116,8 +118,14 @@ export class CarDetailComponent implements OnInit {
     }
   }
 
-  createRentalRequest(car: Car) {
-    if (this.customerID === undefined) {
+  getCustomersDetails() {
+    this.customerService.getCustomersDetails().subscribe((response) => {
+      this.customers = response.data;
+    });
+  }
+
+  createRentalRequest(carDetail: CarDetail) {
+    if (this.customers === undefined) {
       this.toastrService.warning('Müşteri bilgisini kontrol ediniz.');
     } else if (this.rentDate === undefined || !this.rentDate) {
       this.toastrService.warning('Alış Tarihi bilgisini kontrol ediniz.');
@@ -132,14 +140,14 @@ export class CarDetailComponent implements OnInit {
     } else {
       this.toastrService.info('Bilgileriniz kontrol ediliyor.');
 
-      this.carID = car.carID;
-      this.carBrandName = car.brandName;
-      this.carModelYear = car.modelYear;
-      this.carDailyPrice = car.dailyPrice;
+      this.carID = carDetail.carID;
+      this.carBrandName = carDetail.brandName;
+      this.carModelYear = carDetail.modelYear;
+      this.carDailyPrice = carDetail.dailyPrice;
 
       let carToBeRented: Rental = {
         carID: this.carID,
-        customerID: parseInt(this.customerID.toString()),
+        customerID: this.customerID,
         rentDate: this.rentDate,
         returnDate: this.returnDate,
       };
@@ -155,7 +163,7 @@ export class CarDetailComponent implements OnInit {
           this.amountPaye = numberOfDays * this.carDailyPrice;
 
           if (this.amountPaye <= 0) {
-            this.router.navigate(['/cardetails/' + this.carID]);
+            this.router.navigate(['/carDetail/' + this.carID]);
             this.toastrService.error('Araç listesine yönlendiriliyorsunuz','Hatalı işlem');
           } 
           else {
