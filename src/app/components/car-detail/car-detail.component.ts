@@ -21,8 +21,7 @@ export class CarDetailComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private carDetailService: CarDetailService,
     private carImageService: CarImageService,
-    private toastrService: ToastrService,
-    private rentService: RentService
+    
   ) {}
 
   ngOnInit(): void {
@@ -59,8 +58,5 @@ export class CarDetailComponent implements OnInit {
     }
   }
 
-  rentCar(carDetail: Car) {
-    this.toastrService.success('Araç Kiralandı', carDetail.carName);
-    this.rentService.rentCar(carDetail);
-  }
+  
 }

@@ -7,6 +7,8 @@ import { CarService } from 'src/app/services/car.service';
 import { ActivatedRoute } from '@angular/router';
 import { CarDetail } from 'src/app/models/carDetail';
 import { CarImage } from 'src/app/models/carImage';
+import { ToastrService } from 'ngx-toastr';
+import { RentService } from 'src/app/services/rent.service';
 
 @Component({
   selector: 'app-car',
@@ -20,7 +22,9 @@ export class CarComponent implements OnInit {
   carFilter:" ";
 
   constructor(private carService: CarService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private toastrService: ToastrService,
+    private rentService: RentService) { }
 
   ngOnInit(): void {
 
@@ -67,6 +71,11 @@ export class CarComponent implements OnInit {
     else{
       return 'default.jpg'
     }
+  }
+
+  rentCar(car: Car) {
+    this.toastrService.success('Araç Kiralandı', car.carName);
+    this.rentService.rentCar(car);
   }
 
 }

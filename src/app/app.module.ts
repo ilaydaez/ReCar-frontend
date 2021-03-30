@@ -20,6 +20,7 @@ import { ColorFilterPipePipe } from './pipes/color-filter-pipe.pipe';
 
 import {ToastrModule} from 'ngx-toastr';
 import { RentSummaryComponent } from './components/rent-summary/rent-summary.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { RentSummaryComponent } from './components/rent-summary/rent-summary.com
     CarFilterPipePipe,
     BrandFilterPipePipe,
     ColorFilterPipePipe,
-    RentSummaryComponent
+    RentSummaryComponent,
+    SidebarComponent
 
   ],
   imports: [

@@ -1,20 +1,14 @@
-<li *ngIf="rentItems" class="nav-item dropdown">
-    <a
-      class="nav-link dropdown-toggle"
-      id="navbarDropdown"
-      role="button"
-      data-toggle="dropdown"
-      aria-haspopup="true"
-      aria-expanded="false"
-    >
+
+  <li *ngIf="rentItems" class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
       Sepet
     </a>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      <li *ngFor="let rentItem of rentItems"><a class="dropdown-item" ><span (click)="removeFromRent(rentItem.car)" class="badge bg-secondary">Sil</span>
-      {{rentItem.car.carName}}<span class="badge bg-secondary">{{rentItem.quantity}}</span></a></li>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item">Sepete Git</a>
-    </div>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <li *ngFor="let rentItem of rentItems"><a class="dropdown-item"><span (click)="removeFromRent(rentItem.car)" class="badge bg-secondary">Sil</span>
+        {{rentItem.car.carName}}<span class="badge bg-secondary">{{rentItem.quantity}}</span></a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item">Sepete Git</a></li>
+    </ul>
   </li>
 
   

@@ -1,4 +1,4 @@
-<app-navi></app-navi>
+
 
 <div class="mb-3">
   <label for="filterText" class="form-label">Araba Ara</label>
@@ -33,7 +33,7 @@
         <p><b>Günlük Fiyatı :</b> {{ car.dailyPrice | currency }}</p>
         <hr />
         <p>
-          <b>KDV Fiyatı :</b> {{ car.dailyPrice | vatAdded: 10 | currency }}
+          <b>KDV Fiyatı :</b> {{ car.dailyPrice | vatAdded:10 | currency }}
         </p>
         <hr />
         <p><b>Renk :</b> {{ car.colorName }}</p>
@@ -42,6 +42,11 @@
           routerLink="/cars/detail/{{ car.carID }}"
           class="btn btn-outline-dark mt-2"
           >Detay</a
+        >
+
+        <a
+         (click)="rentCar(car)" class="btn btn-outline-success mt-2">Kirala
+          </a
         >
       </div>
     </div>

@@ -3,7 +3,12 @@
   <input  type="text" [(ngModel)]="colorFilter" class="form-control" placeholder="Renk Ara" >
 </div>
 
-<ul class="list-group">
+<select (change)="setCurrentColor()" [(ngModel)]="currentColor" name="colorSelect" class="form-select" aria-label="Renkler" >
+  <option [ngValue]="allColor" [selected]="allColorSelected()">Tüm Renkler</option>
+  <option [ngValue]="color" *ngFor="let color of colors | colorFilterPipe: colorFilter">{{color.colorName}}</option>
+</select>
+
+<!-- <ul class="list-group">
   <li
   [class]="getAllColorClass()"
   routerLink="/cars"
@@ -13,4 +18,4 @@
   (click)="setCurrentColor(color)"
   routerLink="/cars/color/{{color.colorID}}"
   *ngFor="let color of colors | colorFilterPipe: colorFilter">{{color.colorName}}</li>
-</ul>
+</ul> -->
