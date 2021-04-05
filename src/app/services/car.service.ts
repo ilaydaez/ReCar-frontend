@@ -34,4 +34,8 @@ export class CarService {
     return this.httpClient
       .get<ListResponseModel<Car>>(newApiUrl);
   }
+
+  add(car:Car){
+    return this.httpClient.post(this.apiUrl + "addcar", car)
+  }
 }

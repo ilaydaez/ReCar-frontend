@@ -5,6 +5,8 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { CarService } from 'src/app/services/car.service';
 
 @Component({
   selector: 'app-car-add',
@@ -14,7 +16,9 @@ import {
 export class CarAddComponent implements OnInit {
   carAddForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder,
+    private carService:CarService,
+    private toastrService:ToastrService) {}
 
   ngOnInit(): void {
     this.createCarAddForm();
@@ -26,7 +30,23 @@ export class CarAddComponent implements OnInit {
       dailyPrice:["",Validators.required],
       brandID:["",Validators.required],
       colorID:["",Validators.required],
+      modelYear:["",Validators.required],
       description:["",Validators.required]
     });
   }
+
+  add(){
+    if (this.carAddForm.valid) {
+      let carModel = Object.assign({},this.carAddForm.value) 
+      this.carService.add(carModel).subscribe(response=>{
+        console.log(response)
+        this.toastrService.success("Ürün eklendi")
+      })
+      
+    }else{
+      this.toastrService.error("Formunuz Eksik", "Dikkat!")
+    }
+ 
+  }
+
 }
