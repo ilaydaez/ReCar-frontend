@@ -1,7 +1,20 @@
-<app-brand></app-brand>
-<app-color></app-color>
 
-<div class="card-footer text-muted d-flex justify-content-md-between">
-    <button class="btn btn-success" (click)="setRoute()" >Filtrele</button>
-    <button class="btn btn-danger" (click)="clearRoute()" >Temizle</button>
+
+<div class="container">
+    <div class="alert alert-secondary" role="alert">
+        <div class="row align-items-center">
+            <div class="col">
+                <app-brand></app-brand>
+            </div>
+            <div class="col">
+                <app-color></app-color>
+            </div>
+            <div class="col">
+                
+                <button class="btn btn-success" (click)="setRoute()">Filtrele</button>
+                <button class="btn btn-danger" (click)="clearRoute()">Temizle</button>
+            </div>
+          </div>
+      </div>
+  
 </div>

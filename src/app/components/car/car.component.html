@@ -1,6 +1,6 @@
 
 
-<div class="mb-3">
+<!-- <div class="mb-3">
   <label for="filterText" class="form-label">Araba Ara</label>
   <input
     type="text"
@@ -9,12 +9,13 @@
     id="filterText"
     placeholder="Arama İfadesi Giriniz"
   />
-</div>
+</div> -->
 
 <div *ngIf="carFilter" class="alert alert-success">
   {{ carFilter }} aradınız
 </div>
 
+<div class="container-fluid">
 <div class="row ml-0 mr-0">
   <div *ngFor="let car of cars | carFilterPipe:carFilter" class="col-md-4 my-4">
     <div class="card" style="width: 100%">
@@ -38,11 +39,6 @@
         <hr />
         <p><b>Renk :</b> {{ car.colorName }}</p>
         <hr />
-        <!-- <a
-          routerLink="/cars/detail/{{ car.carID }}"
-          class="btn btn-outline-dark mt-10"
-          >Detay</a
-        > -->
 
         <div class="d-grid gap-2 col-6 mx-auto">
           <button routerLink="/cars/detail/{{ car.carID }}" class="btn btn-outline-dark" type="button">Detay</button>
@@ -50,4 +46,5 @@
       </div>
     </div>
   </div>
+</div> 
 </div>

@@ -16,9 +16,11 @@ import { CarService } from 'src/app/services/car.service';
 export class CarAddComponent implements OnInit {
   carAddForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,
-    private carService:CarService,
-    private toastrService:ToastrService) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private carService: CarService,
+    private toastrService: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.createCarAddForm();
@@ -26,31 +28,38 @@ export class CarAddComponent implements OnInit {
 
   createCarAddForm() {
     this.carAddForm = this.formBuilder.group({
-      carName:["", Validators.required],
-      dailyPrice:["",Validators.required],
-      brandID:["",Validators.required],
-      colorID:["",Validators.required],
-      modelYear:["",Validators.required],
-      description:["",Validators.required]
+      carName: ['', Validators.required],
+      dailyPrice: ['', Validators.required],
+      brandID: ['', Validators.required],
+      colorID: ['', Validators.required],
+      modelYear: ['', Validators.required],
+      description: ['', Validators.required],
     });
   }
 
-  add(){
+  add() {
     if (this.carAddForm.valid) {
-      let carModel = Object.assign({},this.carAddForm.value) 
-      this.carService.add(carModel).subscribe(response=>{
-        console.log(response)
-        this.toastrService.success(response.message)
-      }, responseError=>{
-        console.log(responseError.error);
-        this.toastrService.error(responseError.error)
-      })
-      
-      
-    }else{
-      this.toastrService.error("Formunuz Eksik", "Dikkat!")
+      let carModel = Object.assign({}, this.carAddForm.value);
+      this.carService.add(carModel).subscribe(
+        (response) => {
+          this.toastrService.success(response.message);
+        },
+        (responseError) => {
+          if (responseError.error.Errors.length>0) {
+            
+            for (let i = 0; i < responseError.error.Errors.length; i++) {
+              this.toastrService.error(
+                responseError.error.Errors[i].ErrorMessage,
+                'Doğrulama Hatası'
+              );
+              
+            }
+           
+          }
+        }
+      );
+    } else {
+      this.toastrService.error('Formunuz Eksik', 'Dikkat!');
     }
- 
   }
-
 }

@@ -9,6 +9,8 @@ import { CarDetail } from 'src/app/models/carDetail';
 import { CarImage } from 'src/app/models/carImage';
 import { ToastrService } from 'ngx-toastr';
 import { RentService } from 'src/app/services/rent.service';
+import { Brand } from 'src/app/models/brand';
+import { Color } from 'src/app/models/color';
 
 @Component({
   selector: 'app-car',
@@ -20,6 +22,11 @@ export class CarComponent implements OnInit {
   cars : Car[] = [];
   carImageBasePath = "https://localhost:44350/images/";
   carFilter:" ";
+
+  brands:Brand[];
+  colors:Color[];
+  colorID:number;
+  brandID:number;
 
   constructor(private carService: CarService,
     private activatedRoute: ActivatedRoute,
@@ -76,6 +83,33 @@ export class CarComponent implements OnInit {
   rentCar(car: Car) {
     this.toastrService.success('Araç Kiralandı', car.carName);
     this.rentService.rentCar(car);
+  }
+
+  getSelectedBrand(id:number){
+    if (this.brandID == id)
+    {
+      return true;
+    }
+     else
+    {
+      return false;
+    }
+  }
+  
+  getSelectedColor(id:number){
+    if (this.colorID == id) 
+    {
+      return true;
+    } 
+    else 
+    {
+      return false;
+    }
+  }
+   getCarsByFilter(brandID:number,colorID:number){
+    this.carService.getCarsByFilter(brandID,colorID).subscribe(response=>{
+      this.cars=response.data;
+    });
   }
 
 }

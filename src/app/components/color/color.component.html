@@ -1,33 +1,9 @@
-<div class="my-4">
-  <input
-    type="text"
-    [(ngModel)]="colorFilter"
-    class="form-control"
-    id="filterText"
-    placeholder="Renk Ara"
-  />
-</div>
-<div *ngIf="colorFilter" class="alert alert-success">
-{{ colorFilter }} aradınız
-</div>
 
-<!-- <div class="my-4">
-  <input  type="text" [(ngModel)]="colorFilter" class="form-control" placeholder="Renk Ara" >
-</div> -->
-
-<select (change)="setCurrentColor()" [(ngModel)]="currentColor" name="colorSelect" class="form-select" aria-label="Renkler" >
-  <option [ngValue]="allColor" [selected]="allColorSelected()">Tüm Renkler</option>
-  <option [ngValue]="color" *ngFor="let color of colors | colorFilterPipe: colorFilter">{{color.colorName}}</option>
-</select>
-
-<!-- <ul class="list-group">
-  <li
-  [class]="getAllColorClass()"
-  routerLink="/cars"
-  >Tüm Renkler</li>
-  <li  
-  [class]="getCurrentClass(color)"
-  (click)="setCurrentColor(color)"
-  routerLink="/cars/color/{{color.colorID}}"
-  *ngFor="let color of colors | colorFilterPipe: colorFilter">{{color.colorName}}</li>
-</ul> -->
+    
+      <select (change)="setCurrentColor()" [(ngModel)]="currentColor" name="colorSelect" class="form-select" aria-label="Renkler" >
+        <option [ngValue]="allColor" [selected]="allColorSelected()">Tüm Renkler</option>
+        <option [ngValue]="color" *ngFor="let color of colors | colorFilterPipe: colorFilter">{{color.colorName}}</option>
+      </select>
+    
+    
+  

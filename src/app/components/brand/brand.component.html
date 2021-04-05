@@ -1,33 +1,10 @@
-<div class="my-4">
-  <input
-    type="text"
-    [(ngModel)]="filterBrand"
-    class="form-control"
-    id="filterText"
-    placeholder="Marka Ara"
-  />
-<!-- <input type="text" [(ngModel)]="filterBrand" class="form-control" placeholder="Marka Ara" > -->
-</div>
-<div *ngIf="filterBrand" class="alert alert-success">
-{{ filterBrand }} aradınız
-</div>
 
-<form>
+  
+    <select (change)="setCurrentBrand()" [(ngModel)]="currentBrand" name="brandSelect" class="form-select" aria-label="Markalar" >
+      <option [ngValue]="allBrand" [selected]="allBrandSelected()">Tüm Markalar</option>
+      <option [ngValue]="brand" *ngFor="let brand of brands | brandFilterPipe:filterBrand">{{brand.brandName}}</option>
+    </select>
+  
+  
 
-  <!-- <ul class="list-group">
-    <li
-        [class]="getAllBrandsClass()"
-        routerLink="/cars"
-    >Tüm Markalar</li>
-    <li 
-    (click)="setCurrentBrand(brand)"
-    [class]="getCurrentBrand(brand)" 
-    routerLink="/cars/brand/{{brand.brandID}}"
-    *ngFor="let brand of brands | brandFilterPipe:filterBrand">{{brand.brandName}}</li> -->
-  <!-- </ul> -->
-  <select (change)="setCurrentBrand()" [(ngModel)]="currentBrand" name="brandSelect" class="form-select" aria-label="Markalar" >
-    <option [ngValue]="allBrand" [selected]="allBrandSelected()">Tüm Markalar</option>
-    <option [ngValue]="brand" *ngFor="let brand of brands | brandFilterPipe:filterBrand">{{brand.brandName}}</option>
-  </select>
 
-</form>
