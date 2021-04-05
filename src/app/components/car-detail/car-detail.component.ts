@@ -71,15 +71,16 @@ export class CarDetailComponent implements OnInit {
     });
   }
 
-  // getCarImage(carDetail:Car){
+  getCarImage(carDetail:Car){
 
-  //   if(carDetail.imagePath){
-  //     return carDetail.imagePath
-  //   }
-  //   else{
-  //     return 'default.jpg'
-  //   }
-  // }
+    if(carDetail.imagePath){
+      return carDetail.imagePath
+    }
+    else{
+      return 'default.jpg'
+    }
+  }
+
 
   getCarImagesByCarId(carID: number) {
     this.carImageService.getCarImageByCarId(carID).subscribe((response) => {

@@ -7,12 +7,12 @@
           <div class="preview-pic tab-content">
             <div class="tab-pane active" id="1">
               <img
-              src="{{ carImageBasePath }}"
-              (click)="chooseOtherPhotoByImageUrl(carImageBasePath)"
+                src="{{ carImageBasePath }}{{ getCarImage(carDetail) }}"
+                (click)="chooseOtherPhotoByImageUrl(carImageBasePath)"
               />
             </div>
           </div>
-          <ul class="preview-thumbnail nav nav-tabs">
+          <!-- <ul class="preview-thumbnail nav nav-tabs">
             <li *ngFor="let carImage of carImages">
               <a data-target="#{{ carImage.imageID }}" data-toggle="tab">
                 <img
@@ -21,7 +21,7 @@
                 />
               </a>
             </li>
-          </ul>
+          </ul> -->
         </div>
         <table class="table table-sm">
           ...
