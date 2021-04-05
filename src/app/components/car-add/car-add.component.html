@@ -1,0 +1,54 @@
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header"><h5 class="title">Araç Ekle</h5></div>
+      <div class="card-body">
+        <form [formGroup]="carAddForm">
+
+            <div class="mb-3">
+                <label for="carName">Araç Adı</label>
+                <div class="form-group">
+                    <input type="text" id="carName" formControlName="carName" class="form-control" placeholder="Araç Adı"/>
+                </div>
+            </div>
+            
+
+            <div class="mb-3">
+                <label for="brandID">Marka</label>
+                <div class="form-group">
+                    <input type="number" id="brandID" formControlName="brandID" class="form-control" placeholder="Marka"/>
+                </div>
+            </div>
+            
+
+            <div class="mb-3">
+                <label for="colorID">Renk</label>
+                <div class="form-group">
+                    <input type="number" id="colorID" formControlName="colorID" class="form-control" placeholder="Renk"/>
+                </div>
+            </div>
+            
+
+            <div class="mb-3">
+                <label for="dailyPrice">Günlük Fiyatı</label>
+                <div class="form-group">
+                    <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control" placeholder="Günlük Fiyatı"/>
+                </div>
+            </div>
+            
+
+            <div class="mb-3">
+                <label for="description">Açıklama</label>
+                <div class="form-group">
+                    <input type="text" id="description" formControlName="description" class="form-control" placeholder="Açıklama"/>
+                </div>
+            </div>
+            
+        </form>
+      </div>
+      <div class="card-footer">
+          <button class="btn btn-fill btn-primary" (click)="add()">Ekle</button>
+      </div>
+    </div>
+  </div>
+</div>
