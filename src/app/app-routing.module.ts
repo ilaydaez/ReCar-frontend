@@ -9,7 +9,9 @@ import { CarListComponent } from './components/car-list/car-list.component';
 import { CarUpdateComponent } from './components/car-update/car-update.component';
 import { CarComponent } from './components/car/car.component';
 import { ColorListComponent } from './components/color-list/color-list.component';
+import { LoginComponent } from './components/login/login.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   {path: "", pathMatch : 'full', component: CarComponent},
@@ -18,11 +20,14 @@ const routes: Routes = [
   {path: "cars/color/:colorID", component: CarComponent},
   {path: "cars/detail/:carID", component: CarDetailComponent},
   {path:"payments", component:PaymentComponent},
-  {path:"brands/brandList",component:BrandListComponent},
-  {path:"colors/colorList",component:ColorListComponent},
-  {path:"cars/carList",component:CarListComponent},
-  {path:"cars/carList/carAdd", component:CarAddComponent},
-  {path:"cars/carList/carUpdate/:carID", component:CarUpdateComponent  }
+  {path:"brands/brandList",component:BrandListComponent, canActivate:[LoginGuard]},
+  {path:"colors/colorList",component:ColorListComponent, canActivate:[LoginGuard]},
+
+  {path:"cars/carList",component:CarListComponent, canActivate:[LoginGuard]},
+  {path:"cars/carList/carAdd", component:CarAddComponent, canActivate:[LoginGuard]},
+  {path:"cars/carList/carUpdate/:carID", component:CarUpdateComponent  },
+
+  {path:"login", component:LoginComponent  }
 
   
 ];
