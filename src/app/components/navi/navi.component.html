@@ -29,11 +29,20 @@
             >Müşteriler</a
           >
           </li><li>
-          <a
-            routerLink="/rentals"
-            class="nav-link"
-            >Kiralanan Araçlar</a
-          >
+            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Yönetici İşlemleri
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                    <li><a class="dropdown-item" type="button"routerLink="/cars/carList">Araç işlemleri</a></li>
+                    <li><a class="dropdown-item" type="button"routerLink="/brands/brandList">Marka İşlemleri</a></li>
+                    <li><a class="dropdown-item"  type="button"routerLink="/colors/colorList">Renk İşlemleri</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
         </li>
 
         <li>

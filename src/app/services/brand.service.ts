@@ -22,4 +22,19 @@ export class BrandService {
   add(brand:Brand):Observable<ResponseModel>{
     return this.httpClient.post<ResponseModel>(this.brandsApiUrl + "addbrand", brand)
   }
+
+  updateBrand(brand:Brand):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.brandsApiUrl + "UpdateBrand", brand);
+  }
+
+  deleteBrand(brand:Brand):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.brandsApiUrl + "DeleteBrand", brand);
+  }
+
+  getCarsByBrand(brandID: number) : Observable<ListResponseModel<Brand>>{
+    let newBrandApiUrl = this.brandsApiUrl + "GetByBrandId?id=" + brandID;
+
+    return this.httpClient
+      .get<ListResponseModel<Brand>>(newBrandApiUrl);
+  }
 }

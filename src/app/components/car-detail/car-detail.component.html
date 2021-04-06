@@ -1,121 +1,93 @@
-<div class="carDetail">
-  <div class="container-fliud">
-    <div class="wrapper row">
-      <div class="row mt-4 ml-0 mr-0">
-        <div class="col-md-8 offset-md-4">
-          >
-          <div class="preview-pic tab-content">
-            <div class="tab-pane active" id="1">
-              <img
-                src="{{ carImageBasePath }}{{ getCarImage(carDetail) }}"
-                (click)="chooseOtherPhotoByImageUrl(carImageBasePath)"
-              />
-            </div>
-          </div>
-          <!-- <ul class="preview-thumbnail nav nav-tabs">
-            <li *ngFor="let carImage of carImages">
-              <a data-target="#{{ carImage.imageID }}" data-toggle="tab">
-                <img
-                src="{{ carImageBasePath }}{{ carImage.imagePath }}"
-                (click)="setParentImage(carImage)"
-                />
-              </a>
-            </li>
-          </ul> -->
-        </div>
-        <table class="table table-sm">
-          ...
-        </table>
-        <div
-          class="row mt-4 ml-0 mr-0"
-          class="col-md-8 offset-md-2"
-          *ngIf="carDetail"
-        >
-          <h3 class="product-title">{{ carDetail.brandName }}</h3>
-          <h5 class="sizes">
-            Model Yılı: <span> {{ carDetail.modelYear }}</span>
-          </h5>
-          <h5 class="sizes">
-            Renk: <span>{{ carDetail.colorName }}</span>
-          </h5>
-          <h5 class="price">
-            Ücret: <span>{{ carDetail.dailyPrice | currency: "₺" }}</span>
-          </h5>
-          <h5 class="product-description">
-            Açıklama: {{ carDetail.description }}
-          </h5>
 
-          <div class="form-group row">
-            <label for="customerSelect" class="col-3 col-form-label sizes"
-              >Müşteriler:</label
-            >
-            <div class="col-9">
-              <select
-                [(ngModel)]="customerID"
-                id="customerSelect"
-                class="form-select"
-                aria-label="Müşteriler"
+
+<div class="container">
+  <div class="card mb-3" >
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img  src="{{ carImageBasePath }}{{ getCarImage(carDetail) }}"
+        (click)="chooseOtherPhotoByImageUrl(carImageBasePath)">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"> Model Yılı: <span> {{ carDetail.modelYear }}</span></h5>
+          <h5 class="card-title"> Renk: <span>{{ carDetail.colorName }}</span></h5>
+          <h5 class="card-title">  Ücret: <span>{{ carDetail.dailyPrice | currency: "₺" }}</span></h5>
+          <h5 class="card-title"> Açıklama: {{ carDetail.description }}</h5>
+  
+         
+  
+            <div class="form-group row">
+              <label for="customerSelect" class="col-3 col-form-label sizes"
+                >Müşteriler:</label
               >
-                <option [value]="customerID" *ngFor="let customer of customers">
-                  {{ customer.userFirstName }} {{ customer.userLastName }} |
-                  {{ customer.companyName }}
-                </option>
-              </select>
+              <div class="col-9">
+                <select
+                  [(ngModel)]="customerID"
+                  id="customerSelect"
+                  class="form-select"
+                  aria-label="Müşteriler"
+                >
+                  <option [value]="customerID" *ngFor="let customer of customers">
+                    {{ customer.userFirstName }} {{ customer.userLastName }} |
+                    {{ customer.companyName }}
+                  </option>
+                </select>
+              </div>
             </div>
-          </div>
-
-          <div class="form-group row">
-            <label for="rentDate" class="col-3 col-form-label sizes"
-              >Alış Tarihi:</label
-            >
-            <div class="col-9">
-              <input
-                class="form-control"
-                type="datetime-local"
-                id="rentDate"
-                [(ngModel)]="rentDate"
-              />
+  
+            <div class="form-group row">
+              <label for="rentDate" class="col-3 col-form-label sizes"
+                >Alış Tarihi:</label
+              >
+              <div class="col-9">
+                <input
+                  class="form-control"
+                  type="datetime-local"
+                  id="rentDate"
+                  [(ngModel)]="rentDate"
+                />
+              </div>
             </div>
-          </div>
-          <div class="form-group row">
-            <label for="returnDate" class="col-3 col-form-label sizes"
-              >Teslim Tarihi:</label
-            >
-            <div class="col-9">
-              <input
-                class="form-control"
-                type="datetime-local"
-                id="returnDate"
-                [(ngModel)]="returnDate"
-              />
+            <div class="form-group row">
+              <label for="returnDate" class="col-3 col-form-label sizes"
+                >Teslim Tarihi:</label
+              >
+              <div class="col-9">
+                <input
+                  class="form-control"
+                  type="datetime-local"
+                  id="returnDate"
+                  [(ngModel)]="returnDate"
+                />
+              </div>
             </div>
-          </div>
-
-          <div class="form-group row" *ngIf="amountPaye">
-            <label for="rentDate" class="col-3 col-form-label sizes"
-              >Ödenecek Miktar:</label
-            >
-            <div class="col-9">
-              <h5 class="price">
-                <span class="text-danger">{{
-                  amountPaye | currency: "₺"
-                }}</span>
-              </h5>
+  
+            <div class="form-group row" *ngIf="amountPaye">
+              <label for="rentDate" class="col-3 col-form-label sizes"
+                >Ödenecek Miktar:</label
+              >
+              <div class="col-9">
+                <h5 class="price">
+                  <span class="text-danger">{{
+                    amountPaye | currency: "₺"
+                  }}</span>
+                </h5>
+              </div>
             </div>
-          </div>
-
-          <div class="d-grid gap-2 col-6 mx-auto">
-            <div class="action"></div>
-            <button
-              (click)="createRentalRequest(carDetail)"
-              class="add-to-cart btn btn-success"
-              type="button"
-            >
-              Kirala
-            </button>
-          </div>
+            <div class="d-grid gap-2 col-4 mx-auto">
+              <div class="action"></div>
+              <button
+                (click)="createRentalRequest(carDetail)"
+                class="add-to-cart btn btn-success"
+                type="button"
+              >
+                Kirala
+              </button>
+            </div>
         </div>
       </div>
     </div>
   </div>
+  
+
 </div>

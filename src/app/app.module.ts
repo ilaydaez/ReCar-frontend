@@ -23,8 +23,11 @@ import { RentSummaryComponent } from './components/rent-summary/rent-summary.com
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
-import { BrandAddComponent } from './components/brand-add/brand-add.component';
-import { ColorAddComponent } from './components/color-add/color-add.component';
+import { BrandListComponent } from './components/brand-list/brand-list.component';
+import { ColorListComponent } from './components/color-list/color-list.component';
+import { CarListComponent } from './components/car-list/car-list.component';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
+
 
 @NgModule({
   declarations: [
@@ -44,8 +47,11 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
     SidebarComponent,
     PaymentComponent,
     CarAddComponent,
-    BrandAddComponent,
-    ColorAddComponent
+    BrandListComponent,
+    ColorListComponent,
+    CarListComponent,
+    CarUpdateComponent,
+
 
   ],
   imports: [

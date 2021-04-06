@@ -1,0 +1,37 @@
+
+  <h5><p class="font-weight-bold">Araç Listesi</p></h5>
+  
+  <button class="btn btn-success"  routerLink="/cars/carList/carAdd" >Araç Ekle </button>
+  <div> <br></div>
+ 
+  <table class="table table-bordered table-condensed table-hover">
+      <thead class="thead-dark">
+        <tr>
+            <th scope="col">Resim</th>
+            <th scope="col">Araç Kodu</th>    
+            <th scope="col">Araç Adı</th>            
+            <th scope="col">Marka</th>
+            <th scope="col">Renk</th>
+            <th scope="col">Model</th>
+            <th scope="col">Fiyat</th>
+          <th scope="col">Güncelle</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let car of cars | carFilterPipe:carFilter">
+        <td><img src="{{ carImageBasePath }}{{ getCarImage(car) }}" style="width: 300px;;height: 250px;;"></td>
+         <td>{{ car.carID }}</td> 
+         <td>{{ car.carName}}</td>
+         <td>{{ car.brandName }}</td>          
+          <td>{{ car.colorName }}</td>
+          <td>{{ car.modelYear }}</td>
+          <td>{{ car.dailyPrice | currency: "₺" }}</td>
+          <td class="operations">
+            <button class="btn btn-fill btn-primary me-md-end"  routerLink="/cars/carList/carUpdate/{{ car.carID }}" >Güncelle</button>
+            <button class="btn btn-fill btn-danger me-md-end" routerLink="/car/delete" >Sil</button>
+          </td>
+         
+        </tr>
+      </tbody>
+    </table>
