@@ -6,16 +6,15 @@ import { Rental } from './rental';
 export interface CarDetail {
   carID: number;
   brandName: string;
-  // modelName: string;
   colorName: string;
   modelYear: number;
   dailyPrice: number;
   description: string;
-  // previewImagePath:string;
   customerID: number;
   carName:string;
   imagePath:string;
   colorID:number;
   brandID:number;
+  findexScore:number;
 
 }

@@ -31,6 +31,11 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { CustomerDetailComponent } from './components/customer-detail/customer-detail.component';
+import { CustomerNullComponent } from './components/customer-null/customer-null.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { FindexComponent } from './components/findex/findex.component';
 
 
 @NgModule({
@@ -57,6 +62,11 @@ import { RegisterComponent } from './components/register/register.component';
     CarUpdateComponent,
     LoginComponent,
     RegisterComponent,
+    UserDetailComponent,
+    CustomerDetailComponent,
+    CustomerNullComponent,
+    ChangePasswordComponent,
+    FindexComponent,
 
 
   ],

@@ -27,6 +27,7 @@ export class CarComponent implements OnInit {
   colors:Color[];
   colorID:number;
   brandID:number;
+  
 
   constructor(private carService: CarService,
     private activatedRoute: ActivatedRoute,

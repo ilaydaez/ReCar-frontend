@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark col-md-12 mt-12">
-  <!-- Navbar content -->
-  <div class="container-fluid">
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark col-md-12 mt-12"> -->
+<!-- Navbar content -->
+<!-- <div class="container-fluid">
     <a class="navbar-brand" href="#">Rent A Car</a>
     <button
       class="navbar-toggler"
@@ -16,39 +16,62 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a
-            routerLink="/cars"
-            class="nav-link"
-            >Araçlar</a
-          >
+          <a routerLink="/cars" class="nav-link">Araçlar</a>
         </li>
         <li class="nav-item">
-          <a
-            routerLink="/customers"
-            class="nav-link"
-            >Müşteriler</a
-          >
-          </li><li>
-            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-              <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Yönetici İşlemleri
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                    <li><a class="dropdown-item" type="button"routerLink="/cars/carList">Araç işlemleri</a></li>
-                    <li><a class="dropdown-item" type="button"routerLink="/brands/brandList">Marka İşlemleri</a></li>
-                    <li><a class="dropdown-item"  type="button"routerLink="/colors/colorList">Renk İşlemleri</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
+          <a routerLink="/customers" class="nav-link">Müşteriler</a>
+        </li>
+        <li>
+          <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDarkDropdownMenuLink"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Yönetici İşlemleri
+                </a>
+                <ul
+                  class="dropdown-menu dropdown-menu-dark"
+                  aria-labelledby="navbarDarkDropdownMenuLink"
+                >
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      type="button"
+                      routerLink="/cars/carList"
+                      >Araç işlemleri</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      type="button"
+                      routerLink="/brands/brandList"
+                      >Marka İşlemleri</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      type="button"
+                      routerLink="/colors/colorList"
+                      >Renk İşlemleri</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </li>
 
         <li>
           <app-rent-summary></app-rent-summary>
         </li>
-
       </ul>
       <form class="d-flex">
         <input
@@ -57,8 +80,136 @@
           placeholder="Araç Adı Giriniz..."
           aria-label="Search"
         />
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-sm btn-outline-success me-4" type="submit">
+          Search
+        </button>
+      </form> -->
+
+<nav class="navbar navbar-expand-md navbar-light fixed-top bg-mybg bg-gradient">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">RentACar</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a routerLink="/cars" class="nav-link">Araçlar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/customers">Müşteriler</a>
+        </li>
+        <li>
+          <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDarkDropdownMenuLink"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Yönetici İşlemleri
+                </a>
+                <ul
+                  class="dropdown-menu dropdown-menu-dark"
+                  aria-labelledby="navbarDarkDropdownMenuLink"
+                >
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      type="button"
+                      routerLink="/cars/carList"
+                      >Araç işlemleri</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      type="button"
+                      routerLink="/brands/brandList"
+                      >Marka İşlemleri</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      type="button"
+                      routerLink="/colors/colorList"
+                      >Renk İşlemleri</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+      <form *ngIf="Authenticated == false">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button
+            class="btn btn-sm btn-lg btn-outline-secondary me-md-2"
+            type="button"
+            routerLink="/login"
+          >
+            Giriş Yap
+          </button>
+          <button
+            class="btn btn-sm btn-secondary btn-lg"
+            type="button"
+            routerLink="/register"
+          >
+            Kayıt Ol
+          </button>
+        </div>
       </form>
+
+      <ul
+        class="navbar-nav me-auto mb-2 mb-lg-0"
+        *ngIf="Authenticated != false"
+      >
+        <li class="nav-item dropdown right">
+          <a
+            
+            class="nav-link dropdown-toggle text-dark"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <!-- {{ user.userFirstName }}
+            {{ user.userLastName }} (Findex : {{ user.findexPoint }}) -->
+
+            İlayda EZ (Findex : 1050)
+          </a>
+
+          <ul
+            class="dropdown-menu colorlb"
+            aria-labelledby="navbarDropdown"
+            style="background-color: rgb(172, 167, 167)"
+          >
+            <li class="colorl">
+              <a class="dropdown-item" routerLink="/profile">Profil</a>
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" (click)="logOut()">Çıkış Yap</a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
+<br />
+<br />
+<br />
+<br />

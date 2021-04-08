@@ -33,11 +33,9 @@
         <hr />
         <p><b>Günlük Fiyatı :</b> {{ car.dailyPrice | currency }}</p>
         <hr />
-        <p>
-          <b>KDV Fiyatı :</b> {{ car.dailyPrice | vatAdded:10 | currency }}
-        </p>
-        <hr />
         <p><b>Renk :</b> {{ car.colorName }}</p>
+        <hr />
+        <p><b>Findex Puanı :</b> {{ car.findexScore }}</p>
         <hr />
 
         <div class="d-grid gap-2 col-6 mx-auto">

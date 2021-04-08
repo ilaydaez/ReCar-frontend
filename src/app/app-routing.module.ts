@@ -8,34 +8,61 @@ import { CarDetailComponent } from './components/car-detail/car-detail.component
 import { CarListComponent } from './components/car-list/car-list.component';
 import { CarUpdateComponent } from './components/car-update/car-update.component';
 import { CarComponent } from './components/car/car.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { ColorListComponent } from './components/color-list/color-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { RegisterComponent } from './components/register/register.component';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
-  {path: "", pathMatch : 'full', component: CarComponent},
-  {path: "cars", component: CarComponent},
-  {path: "cars/brand/:brandID", component: CarComponent},
-  {path: "cars/color/:colorID", component: CarComponent},
-  {path: "cars/detail/:carID", component: CarDetailComponent},
-  {path:"payments", component:PaymentComponent},
-  {path:"brands/brandList",component:BrandListComponent, canActivate:[LoginGuard]},
-  {path:"colors/colorList",component:ColorListComponent, canActivate:[LoginGuard]},
+  { path: '', pathMatch: 'full', component: CarComponent },
+  { path: 'cars', component: CarComponent },
+  { path: 'cars/brand/:brandID', component: CarComponent },
+  { path: 'cars/color/:colorID', component: CarComponent },
+  { path: 'cars/detail/:carID', component: CarDetailComponent },
+  { path: 'payments', component: PaymentComponent },
+  {
+    path: 'brands/brandList',
+    component: BrandListComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'colors/colorList',
+    component: ColorListComponent,
+    canActivate: [LoginGuard],
+  },
 
-  {path:"cars/carList",component:CarListComponent, canActivate:[LoginGuard]},
-  {path:"cars/carList/carAdd", component:CarAddComponent, canActivate:[LoginGuard]},
-  {path:"cars/carList/carUpdate/:carID", component:CarUpdateComponent  },
+  {
+    path: 'cars/carList',
+    component: CarListComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'cars/carList/carAdd',
+    component: CarAddComponent,
+    canActivate: [LoginGuard],
+  },
+  { path: 'cars/carList/carUpdate/:carID', component: CarUpdateComponent },
 
-  {path:"login", component:LoginComponent  },
-  {path:"register", component:RegisterComponent  }
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 
-  
+  {
+    path: 'profile',
+    component: UserDetailComponent,
+  },
+
+  {
+    path: 'changePassword',
+    component: ChangePasswordComponent,
+    canActivate: [LoginGuard],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
