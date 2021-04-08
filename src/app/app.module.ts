@@ -36,6 +36,7 @@ import { CustomerDetailComponent } from './components/customer-detail/customer-d
 import { CustomerNullComponent } from './components/customer-null/customer-null.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { FindexComponent } from './components/findex/findex.component';
+import { HoverDirective } from './directives/hover.directive';
 
 
 @NgModule({
@@ -67,6 +68,7 @@ import { FindexComponent } from './components/findex/findex.component';
     CustomerNullComponent,
     ChangePasswordComponent,
     FindexComponent,
+    HoverDirective,
 
 
   ],
